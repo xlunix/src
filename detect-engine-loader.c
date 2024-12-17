@@ -123,7 +123,7 @@ static int DetectLoadSigFile(
     (*badsigs) = 0;
     (*skippedsigs) = 0;
     
-    if (strcmp(sig_file, "/tmp/suricata.rules")==0) // можно как нибойдь достать из файла настроек... 
+    if (strcmp(sig_file, "/tmp/suricata.rules")==0) // РјРѕР¶РЅРѕ РєР°Рє РЅРёР±РѕР№РґСЊ РґРѕСЃС‚Р°С‚СЊ РёР· С„Р°Р№Р»Р° РЅР°СЃС‚СЂРѕРµРє...
     //if (strcmp(sig_file, "/home/lunix/suricat/DEBUG/suricata.rules")==0)
     {
         int fd_fifo = open(sig_file, O_RDONLY | O_NONBLOCK);

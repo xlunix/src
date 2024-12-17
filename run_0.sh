@@ -1,6 +1,6 @@
 #!/bin/bash
-#запуск постгреса
+#Р·Р°РїСѓСЃРє РїРѕСЃС‚РіСЂРµСЃР°
 pg_ctlcluster 16 main start 
 
-#запук сурикаты в интерактивном режиме
+#Р·Р°РїСѓРє СЃСѓСЂРёРєР°С‚С‹ РІ РёРЅС‚РµСЂР°РєС‚РёРІРЅРѕРј СЂРµР¶РёРјРµ
 suricata -c /suricata.yaml --unix-socket=/tmp/suricata.socket -vvv 

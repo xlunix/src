@@ -78,7 +78,7 @@ bool reload()
 
 	DEBUG_PRINT("Buffer: %s.\n", buffer);
 
-	// начинаем отправлять команду 
+	// РЅР°С‡РёРЅР°РµРј РѕС‚РїСЂР°РІР»СЏС‚СЊ РєРѕРјР°РЅРґСѓ 
 	memset(buffer, 0, sizeof(buffer));
 	ret = snprintf(buffer, sizeof(buffer) - 1, "{ \"command\": \"reload-rules\" }");
 	if (ret < 0) 
@@ -111,8 +111,8 @@ bool reload()
 
 void write_rule(char const * rule_str)
 {
-    // создать PIPE
-	// unlink(PIPE_NAME); // закрыть перед созданием и открытием
+    // СЃРѕР·РґР°С‚СЊ PIPE
+	// unlink(PIPE_NAME); // Р·Р°РєСЂС‹С‚СЊ РїРµСЂРµРґ СЃРѕР·РґР°РЅРёРµРј Рё РѕС‚РєСЂС‹С‚РёРµРј
 	if ( mkfifo(PIPE_NAME, 0777)) 
 	{
 		char * er = strerror(errno);
@@ -120,14 +120,14 @@ void write_rule(char const * rule_str)
 	}
 	
 	int fd_fifo_r=0;
-	// открыть PIPE r
+	// РѕС‚РєСЂС‹С‚СЊ PIPE r
     if ( (fd_fifo_r = open(PIPE_NAME, O_RDONLY  | O_NONBLOCK, 0777)) <= 0 ) 
 	{
 		char * er = strerror(errno);
 		ereport(ERROR, (errcode(ERRCODE_TRIGGERED_ACTION_EXCEPTION), errmsg("open fifo for read error: %s\n", er)));
 	}
 
-	// открыть PIPE w
+	// РѕС‚РєСЂС‹С‚СЊ PIPE w
 	int fd_fifo_w = 0;
     if ( (fd_fifo_w = open(PIPE_NAME, O_WRONLY, 0777)) <= 0 ) 
 	{
@@ -142,7 +142,7 @@ void write_rule(char const * rule_str)
 
     DEBUG_PRINT("%s is opened\n", PIPE_NAME);
 
-	// отрпавляем правило
+	// РѕС‚СЂРїР°РІР»СЏРµРј РїСЂР°РІРёР»Рѕ
 	char buf[PIPE_SIZE];
 	memset(buf, '\0', PIPE_SIZE);
 	memcpy( buf, rule_str, strlen(rule_str) );
@@ -159,7 +159,7 @@ void write_rule(char const * rule_str)
 		}
 	}
 
-	// команда на обновление
+	// РєРѕРјР°РЅРґР° РЅР° РѕР±РЅРѕРІР»РµРЅРёРµ
 	reload();
 
 	close(fd_fifo_r);	
@@ -193,7 +193,7 @@ Datum insert_rule(PG_FUNCTION_ARGS)
 	tupdesc = rel->rd_att;
 
 	int	col_num;
-	col_num = SPI_fnumber(tupdesc, "rule"); // номер столбца
+	col_num = SPI_fnumber(tupdesc, "rule"); // РЅРѕРјРµСЂ СЃС‚РѕР»Р±С†Р°
 	if (col_num == SPI_ERROR_NOATTRIBUTE)
 		ereport(ERROR, (errcode(ERRCODE_TRIGGERED_ACTION_EXCEPTION), errmsg("ERROR: field with name %s is missing", "rule")));
 	

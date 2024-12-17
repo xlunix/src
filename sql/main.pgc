@@ -31,7 +31,7 @@
 
 // 
 // /home/lunix/suricat/suricata/src/detect-engine-loader.c:45   DETECT_MAX_RULE_SIZE 8192 
-// /home/lunix/suricat/suricata/src/detect-engine-loader.c:134  но нужен не больше PIPE_BUF чтобы не нарушалась атомарность
+// /home/lunix/suricat/suricata/src/detect-engine-loader.c:134  РЅРѕ РЅСѓР¶РµРЅ РЅРµ Р±РѕР»СЊС€Рµ PIPE_BUF С‡С‚РѕР±С‹ РЅРµ РЅР°СЂСѓС€Р°Р»Р°СЃСЊ Р°С‚РѕРјР°СЂРЅРѕСЃС‚СЊ
 // 
 #define PLENG 8192
 #if defined (PLENG)
@@ -147,7 +147,7 @@ static void die(void)
  
 	exit(1);
  
-	EXEC SQL WHENEVER SQLERROR CALL die(); // восстановить обработчик
+	EXEC SQL WHENEVER SQLERROR CALL die(); // РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РѕР±СЂР°Р±РѕС‚С‡РёРє
 }
 
 int main(int argc, char **argv)
@@ -169,13 +169,13 @@ int main(int argc, char **argv)
     EXEC SQL END DECLARE SECTION;
     EXEC SQL CONNECT TO :dbname USER :user;
 
-	EXEC SQL OPEN cusor; // курсор
+	EXEC SQL OPEN cusor; // пїЅпїЅпїЅпїЅпїЅпїЅ
 
 	// signal(SIGPIPE, SIG_IGN);
 
-    int fd_filo=0; // файловый для пайпа
+    int fd_filo=0; // С„Р°Р№Р»РѕРІС‹Р№ РґР»СЏ РїР°Р№РїР°
 	char buf[PIPE_SIZE];
-	unlink(PIPE_NAME); // закрыть перед созданием и открытием
+	unlink(PIPE_NAME); // Р·Р°РєСЂС‹С‚СЊ РїРµСЂРµРґ СЃРѕР·РґР°РЅРёРµРј Рё РѕС‚РєСЂС‹С‚РёРµРј
     if ( mkfifo(PIPE_NAME, 0777)) 
     {
 		DEBUG_PRINT("%s is not created\n", PIPE_NAME);
@@ -187,7 +187,7 @@ int main(int argc, char **argv)
 	signal(SIGPIPE, SIG_IGN);
 
 	int fd_filor=0;
-	// открываю на чтение
+	// РѕС‚РєСЂС‹РІР°СЋ РЅР° С‡С‚РµРЅРёРµ
     if ( (fd_filor = open(PIPE_NAME, O_RDONLY  | O_NONBLOCK, 0777)) <= 0 ) 
 	{
 		perror("do not open for read");
@@ -195,7 +195,7 @@ int main(int argc, char **argv)
         return 2;
     }
 
-	// открываю на запись 
+	// РѕС‚РєСЂС‹РІР°СЋ РЅР° Р·Р°РїРёСЃСЊ 
     if ( (fd_filo = open(PIPE_NAME, O_WRONLY, 0777)) <= 0 ) 
     // if ( (fd_filo = open(PIPE_NAME, O_WRONLY, 0777)) <= 0 ) 
     {

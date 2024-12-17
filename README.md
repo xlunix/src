@@ -1,7 +1,7 @@
-1. выполнить команду "docker build -t dockerfile <span style="color:red"><b>.</b></span>"
-2. выполнить скрипт "<span style="color:green">/run_0.sh</span>" в терминале 1;
-3. выполнить скрипт "<span style="color:green">/run_1.sh</span>" в терминале 2;
-4. выполнить скрипт "<span style="color:green">/run_2.sh</span>" в терминале 3;
+1. РІС‹РїРѕР»РЅРёС‚СЊ РєРѕРјР°РЅРґСѓ "docker build -t dockerfile <span style="color:red"><b>.</b></span>"
+2. РІС‹РїРѕР»РЅРёС‚СЊ СЃРєСЂРёРїС‚ "<span style="color:green">/run_0.sh</span>" РІ С‚РµСЂРјРёРЅР°Р»Рµ 1;
+3. РІС‹РїРѕР»РЅРёС‚СЊ СЃРєСЂРёРїС‚ "<span style="color:green">/run_1.sh</span>" РІ С‚РµСЂРјРёРЅР°Р»Рµ 2;
+4. РІС‹РїРѕР»РЅРёС‚СЊ СЃРєСЂРёРїС‚ "<span style="color:green">/run_2.sh</span>" РІ С‚РµСЂРјРёРЅР°Р»Рµ 3;
 
-каждый раз когда суриката читает правило она его парсит, и если не получается, то в терминале 1 будет что то вроже <span style="color:red">"Error: <span style="color:green">detect-parse</span>: An invalid action "!alert" was given....."</span>
+РєР°Р¶РґС‹Р№ СЂР°Р· РєРѕРіРґР° СЃСѓСЂРёРєР°С‚Р° С‡РёС‚Р°РµС‚ РїСЂР°РІРёР»Рѕ РѕРЅР° РµРіРѕ РїР°СЂСЃРёС‚, Рё РµСЃР»Рё РЅРµ РїРѕР»СѓС‡Р°РµС‚СЃСЏ, С‚Рѕ РІ С‚РµСЂРјРёРЅР°Р»Рµ 1 Р±СѓРґРµС‚ С‡С‚Рѕ С‚Рѕ РІСЂРѕР¶Рµ <span style="color:red">"Error: <span style="color:green">detect-parse</span>: An invalid action "!alert" was given....."</span>
 
